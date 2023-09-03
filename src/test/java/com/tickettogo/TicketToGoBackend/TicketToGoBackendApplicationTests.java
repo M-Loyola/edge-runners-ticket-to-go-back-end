@@ -9,7 +9,7 @@ class TicketToGoBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Assertions.assertTrue(true);
+		Assertions.assertTrue(false);
 		System.out.println("Test Jens Commit");
 	}
 
