@@ -18,7 +18,7 @@ public class Cinema {
 
     @ManyToMany
     @JoinTable(
-            name = "movies",
+            name = "movies_cinema",
             joinColumns = @JoinColumn(name = "cinema_id"),
             inverseJoinColumns = @JoinColumn(name = "movies_id"))
     List<Movie> movies;

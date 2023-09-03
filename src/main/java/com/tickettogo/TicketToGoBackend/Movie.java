@@ -1,5 +1,6 @@
 package com.tickettogo.TicketToGoBackend;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public class Movie {
     private String title;
     private Integer duration;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "movies")
     private List<Cinema> cinemas;
 }

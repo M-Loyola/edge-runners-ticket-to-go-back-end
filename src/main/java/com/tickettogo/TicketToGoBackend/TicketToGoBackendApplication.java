@@ -15,6 +15,9 @@ public class TicketToGoBackendApplication {
 	@Autowired
 	private CinemaRepository cinemaRepository;
 
+	@Autowired
+	private MoviesRepository moviesRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TicketToGoBackendApplication.class, args);
 	}
@@ -22,6 +25,10 @@ public class TicketToGoBackendApplication {
 	@GetMapping("/")
 	public List<Cinema> getAll(){
 		return cinemaRepository.findAll();
+	}
+	@GetMapping("/movies")
+	public List<Movie> getAllMovies(){
+		return moviesRepository.findAll();
 	}
 
 }
