@@ -20,6 +20,6 @@ public class Cinema {
     @JoinTable(
             name = "cinema_movies",
             joinColumns = @JoinColumn(name = "cinema_id"),
-            inverseJoinColumns = @JoinColumn(name = "movies_id"))
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
     List<Movie> movies;
 }
