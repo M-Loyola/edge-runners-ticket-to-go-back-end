@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-@CrossOrigin(origins = "https://ex-ticket-to-go-front-end-qa.up.railway.app")
 @SpringBootApplication
 @RestController
 public class TicketToGoBackendApplication {
