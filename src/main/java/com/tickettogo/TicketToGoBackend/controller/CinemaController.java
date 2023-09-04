@@ -24,7 +24,7 @@ public class CinemaController {
         return cinemaService.getAllCinema();
     }
 
-    @GetMapping("/{id}/movies/")
+    @GetMapping("/{id}/movies")
     public Set<Movie> getAllMoviesInCinema(@PathVariable Integer id) {
         return cinemaService.getAllMoviesInCinema(id);
     }
