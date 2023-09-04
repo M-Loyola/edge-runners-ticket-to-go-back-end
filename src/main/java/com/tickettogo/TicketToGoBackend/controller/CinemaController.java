@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/cinemas")
@@ -25,7 +24,7 @@ public class CinemaController {
     }
 
     @GetMapping("/{id}/movies")
-    public Set<Movie> getAllMoviesInCinema(@PathVariable Integer id) {
+    public List<Movie> getAllMoviesInCinema(@PathVariable Integer id) {
         return cinemaService.getAllMoviesInCinema(id);
     }
 }

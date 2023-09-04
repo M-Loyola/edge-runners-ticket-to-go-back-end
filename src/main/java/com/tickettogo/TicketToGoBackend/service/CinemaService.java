@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class CinemaService {
@@ -20,10 +19,10 @@ public class CinemaService {
         return cinemaRepository.findAll();
     }
 
-    public Set<Movie> getAllMoviesInCinema(Integer id) {
+    public List<Movie> getAllMoviesInCinema(Integer id) {
 
         Cinema CinemaById = cinemaRepository.findById(id).orElseThrow(NoCinemaFound::new);
 
-        return CinemaById.getMovieSet();
+        return CinemaById.getMovieList();
     }
 }

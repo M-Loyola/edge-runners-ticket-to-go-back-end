@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
-import java.util.Set;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -48,6 +47,7 @@ public class CinemaControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[0].name")).value("Cinema 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[1].name")).value("Cinema 2"));
     }
+
     @Test
     void should_show_movies_when_perform_get_movies_by_company_id_given_company_controller() throws Exception {
         //given
@@ -55,10 +55,10 @@ public class CinemaControllerTest {
         Movie save = moviesRepository.save(new Movie("John wick 1", 120));
         Movie save1 = moviesRepository.save(new Movie("John wick 2", 150));
 
-        cinema1.setMovieSet(Set.of(save,save1));
+        cinema1.setMovieList(List.of(save, save1));
         Cinema savedCinema = cinemaRepository.save(cinema1);
         //when and then
-        mockMvc.perform(get("/cinemas/{id}/movies",savedCinema.getId()))
+        mockMvc.perform(get("/cinemas/{id}/movies", savedCinema.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[0].title")).value("John wick 1"))

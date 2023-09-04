@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,7 +21,7 @@ public class Cinema {
             name = "cinema_movie",
             joinColumns = @JoinColumn(name = "cinema_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    Set<Movie> movieSet;
+    List<Movie> movieList;
 
     public Cinema(String name, String location) {
         this.name = name;
