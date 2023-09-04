@@ -1,6 +1,5 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
-import com.tickettogo.TicketToGoBackend.entity.Cinema;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.repository.MoviesRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,11 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 class MoviesControllerTest {
@@ -38,7 +34,7 @@ class MoviesControllerTest {
         moviesRepository.save(movie2);
         //when and then
         mockMvc.perform(get("/movies"))
-                .andExpect(MockMvcResultMatchers.status().is(200))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[0].title")).value("John Wick 7"))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[1].title")).value("Spider-Man: Across the Spider-Verse"));

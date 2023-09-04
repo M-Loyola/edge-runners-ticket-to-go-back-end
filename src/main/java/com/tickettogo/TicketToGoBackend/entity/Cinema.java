@@ -18,9 +18,9 @@ public class Cinema {
 
     @OneToMany
     @JoinTable(
-            name="cinema_movie",
-            joinColumns = @JoinColumn( name="cinema_id"),
-            inverseJoinColumns = @JoinColumn( name="movie_id"))
+            name = "cinema_movie",
+            joinColumns = @JoinColumn(name = "cinema_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
     Set<Movie> movieSet;
 
     public Cinema(String name, String location) {

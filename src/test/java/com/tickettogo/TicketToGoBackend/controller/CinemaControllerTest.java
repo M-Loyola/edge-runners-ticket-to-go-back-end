@@ -34,7 +34,7 @@ public class CinemaControllerTest {
 
         //when and then
         mockMvc.perform(get("/cinemas"))
-                .andExpect(MockMvcResultMatchers.status().is(200))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[0].name")).value("Cinema 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[1].name")).value("Cinema 2"));

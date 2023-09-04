@@ -22,8 +22,8 @@ public class CinemaService {
 
     public Set<Movie> getAllMoviesInCinema(Integer id) {
 
-        Cinema byId = cinemaRepository.findById(id).orElseThrow(NoCinemaFound::new);
+        Cinema CinemaById = cinemaRepository.findById(id).orElseThrow(NoCinemaFound::new);
 
-        return byId.getMovieSet();
+        return CinemaById.getMovieSet();
     }
 }
