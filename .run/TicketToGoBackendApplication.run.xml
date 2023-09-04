@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TicketToGoBackendApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="MYSQL_URL" value="mysql://localhost:3306/demo_db?useUnicode=true&amp;characterEncoding=utf8" />
+      <env name="MYSQLPASSWORD" value="mysql1234" />
+      <env name="MYSQLUSER" value="root" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.tickettogo.TicketToGoBackend.TicketToGoBackendApplication" />
+    <module name="TicketToGoBackend.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.tickettogo.TicketToGoBackend.configuration.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

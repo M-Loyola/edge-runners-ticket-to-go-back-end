@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class MovieService {
     @Autowired
     MoviesRepository moviesRepository;
+
     public List<Movie> getAllMovies() {
         return moviesRepository.findAll();
     }

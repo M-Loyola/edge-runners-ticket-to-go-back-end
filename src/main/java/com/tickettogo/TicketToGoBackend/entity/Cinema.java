@@ -16,10 +16,18 @@ public class Cinema {
     private String name;
     private String location;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(
-            name = "cinema_movies",
+            name = "cinema_movie",
             joinColumns = @JoinColumn(name = "cinema_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    List<Movie> movies;
+    List<Movie> movieList;
+
+    public Cinema(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    public Cinema() {
+    }
 }
