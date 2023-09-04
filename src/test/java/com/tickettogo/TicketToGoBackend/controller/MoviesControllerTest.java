@@ -1,5 +1,6 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
+import com.tickettogo.TicketToGoBackend.entity.Cinema;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.repository.MoviesRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 @SpringBootTest

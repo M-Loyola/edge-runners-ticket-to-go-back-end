@@ -3,10 +3,8 @@ package com.tickettogo.TicketToGoBackend.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -17,4 +15,19 @@ public class Cinema {
     private Integer id;
     private String name;
     private String location;
+
+    @OneToMany
+    @JoinTable(
+            name="cinema_movie",
+            joinColumns = @JoinColumn( name="cinema_id"),
+            inverseJoinColumns = @JoinColumn( name="movie_id"))
+    Set<Movie> movieSet;
+
+    public Cinema(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    public Cinema() {
+    }
 }
