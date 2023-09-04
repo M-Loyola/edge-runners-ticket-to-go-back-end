@@ -1,4 +1,4 @@
-package com.tickettogo.TicketToGoBackend;
+package com.tickettogo.TicketToGoBackend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
