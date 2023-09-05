@@ -17,10 +17,24 @@ public class Movie {
     private Integer id;
     private String title;
     private Integer duration;
+    private String image;
+
+    private String description;
+
+    private Boolean isShowing;
 
     public Movie(String title, Integer duration) {
         this.title = title;
         this.duration = duration;
+    }
+
+    public Movie(Integer id, String title, Integer duration, String image, String description,Boolean isShowing) {
+        this.id = id;
+        this.title = title;
+        this.duration = duration;
+        this.image = image;
+        this.description = description;
+        this.isShowing = isShowing;
     }
 
     public Movie() {
