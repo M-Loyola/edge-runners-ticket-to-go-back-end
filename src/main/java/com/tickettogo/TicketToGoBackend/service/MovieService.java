@@ -1,6 +1,7 @@
 package com.tickettogo.TicketToGoBackend.service;
 
 import com.tickettogo.TicketToGoBackend.entity.Movie;
+import com.tickettogo.TicketToGoBackend.exception.NoMovieException;
 import com.tickettogo.TicketToGoBackend.repository.MoviesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,9 @@ public class MovieService {
         return allMovies.stream()
                 .filter(movie -> !movie.getIsShowing())
                 .collect(Collectors.toList());
+    }
+
+    public Movie findById(Integer id) {
+        return moviesRepository.findById(id).orElseThrow(NoMovieException::new);
     }
 }

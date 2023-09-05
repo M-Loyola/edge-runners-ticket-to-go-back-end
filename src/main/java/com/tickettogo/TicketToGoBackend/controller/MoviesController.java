@@ -4,6 +4,7 @@ import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +29,9 @@ public class MoviesController {
     @GetMapping("/upcoming")
     public List<Movie> getUpComingMovies(){
         return movieService.getAllUpComingMovies();
+    }
+    @GetMapping("/{id}")
+    public Movie getMovieById(@PathVariable Integer id){
+        return movieService.findById(id);
     }
 }
