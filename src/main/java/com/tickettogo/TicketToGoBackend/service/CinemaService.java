@@ -19,10 +19,9 @@ public class CinemaService {
         return cinemaRepository.findAll();
     }
 
-    public List<Movie> getAllMoviesInCinema(Integer id) {
+    public List<Cinema> getAllMoviesInCinema(String Location) {
 
-        Cinema CinemaById = cinemaRepository.findById(id).orElseThrow(NoCinemaFound::new);
+        return cinemaRepository.findByLocation(Location);
 
-        return CinemaById.getMovieList();
     }
 }

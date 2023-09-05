@@ -23,8 +23,8 @@ public class CinemaController {
         return cinemaService.getAllCinema();
     }
 
-    @GetMapping("/{id}/movies")
-    public List<Movie> getAllMoviesInCinema(@PathVariable Integer id) {
-        return cinemaService.getAllMoviesInCinema(id);
+    @GetMapping("/{location}/movies")
+    public List<Cinema> getAllMoviesInCinema(@PathVariable String location) {
+        return cinemaService.getAllMoviesInCinema(location);
     }
 }
