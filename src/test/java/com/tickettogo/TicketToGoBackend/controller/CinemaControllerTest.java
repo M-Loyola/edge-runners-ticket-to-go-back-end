@@ -4,6 +4,7 @@ import com.tickettogo.TicketToGoBackend.entity.Cinema;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.repository.CinemaRepository;
 import com.tickettogo.TicketToGoBackend.repository.MoviesRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,12 @@ public class CinemaControllerTest {
 
     @BeforeEach
     void clearAll() {
+        cinemaRepository.deleteAll();
+        moviesRepository.deleteAll();
+    }
+
+    @AfterEach
+    void tearDown() {
         cinemaRepository.deleteAll();
         moviesRepository.deleteAll();
     }
