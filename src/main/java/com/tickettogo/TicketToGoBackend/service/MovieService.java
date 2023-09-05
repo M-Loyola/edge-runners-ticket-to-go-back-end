@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieService {
@@ -14,5 +15,20 @@ public class MovieService {
 
     public List<Movie> getAllMovies() {
         return moviesRepository.findAll();
+    }
+
+    public List<Movie> getAllShowingMovies() {
+        List<Movie> allMovies = getAllMovies();
+
+        return allMovies.stream()
+                .filter(Movie::getIsShowing)
+                .collect(Collectors.toList());
+    }
+
+    public List<Movie> getAllUpComingMovies() {
+        List<Movie> allMovies = getAllMovies();
+        return allMovies.stream()
+                .filter(movie -> !movie.getIsShowing())
+                .collect(Collectors.toList());
     }
 }

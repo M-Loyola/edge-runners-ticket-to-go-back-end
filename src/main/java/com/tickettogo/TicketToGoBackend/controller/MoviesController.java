@@ -19,4 +19,14 @@ public class MoviesController {
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
+
+    @GetMapping("/showing")
+    public List<Movie> getNowShowingMovies(){
+        return movieService.getAllShowingMovies();
+    }
+
+    @GetMapping("/upcoming")
+    public List<Movie> getUpComingMovies(){
+        return movieService.getAllUpComingMovies();
+    }
 }
