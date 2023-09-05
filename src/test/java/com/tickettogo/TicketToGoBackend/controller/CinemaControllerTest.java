@@ -49,7 +49,7 @@ public class CinemaControllerTest {
     }
 
     @Test
-    void should_show_movies_when_perform_get_movies_by_company_id_given_company_controller() throws Exception {
+    void should_show_movies_when_perform_get_movies_by_location_given_company_controller() throws Exception {
         //given
         Cinema cinema1 = new Cinema("Cinema 1", "Manila");
         Movie save = moviesRepository.save(new Movie("John wick 1", 120));
@@ -58,10 +58,11 @@ public class CinemaControllerTest {
         cinema1.setMovieList(List.of(save, save1));
         Cinema savedCinema = cinemaRepository.save(cinema1);
         //when and then
-        mockMvc.perform(get("/cinemas/{id}/movies", savedCinema.getId()))
+        mockMvc.perform(get("/cinemas/{location}/movies", savedCinema.getLocation()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
-                .andExpect(MockMvcResultMatchers.jsonPath(("$[0].title")).value("John wick 1"))
-                .andExpect(MockMvcResultMatchers.jsonPath(("$[1].title")).value("John wick 2"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath(("$[0].name")).value("Cinema 1"))
+                .andExpect(MockMvcResultMatchers.jsonPath(("$[0].movieList[0].title")).value("John wick 1"))
+                .andExpect(MockMvcResultMatchers.jsonPath(("$[0].movieList[1].title")).value("John wick 2"));
     }
 }
