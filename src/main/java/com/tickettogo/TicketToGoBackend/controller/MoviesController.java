@@ -34,8 +34,8 @@ public class MoviesController {
         return movieService.findById(id);
     }
 
-    @GetMapping("/reservationDetails/{cinemaMovieId}")
-    public MovieDetailsDto getAllCinemaMovie(@PathVariable Integer cinemaMovieId) {
-        return movieService.getAllCinemaMovie(cinemaMovieId);
+    @GetMapping("/{cinemaMovieId}/reservationDetails")
+    public MovieDetailsDto GetReservationDetails(@PathVariable Integer cinemaMovieId) {
+        return movieService.GetReservationDetails(cinemaMovieId);
     }
 }
