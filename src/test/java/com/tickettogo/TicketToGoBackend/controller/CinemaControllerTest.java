@@ -1,7 +1,7 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
 import com.tickettogo.TicketToGoBackend.entity.Cinema;
-import com.tickettogo.TicketToGoBackend.entity.DetailsCinemaMovie;
+import com.tickettogo.TicketToGoBackend.entity.DetailsMovAndCin;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.repository.CinemaMovieRepository;
 import com.tickettogo.TicketToGoBackend.repository.CinemaRepository;
@@ -84,9 +84,9 @@ public class CinemaControllerTest {
         //given
         Cinema savedCinema = cinemaRepository.save(new Cinema("Cinema 1", "Manila"));
         Movie savedMovie = moviesRepository.save(new Movie("John wick 1", 120));
-        DetailsCinemaMovie savedCinemaMovie = cinemaMovieRepository.save(new DetailsCinemaMovie(null, savedMovie.getId(), savedCinema.getId(), 500, "2023-09-04 10:30:00", "A1,A2"));
+        DetailsMovAndCin savedCinemaMovie = cinemaMovieRepository.save(new DetailsMovAndCin(null, savedMovie.getId(), savedCinema.getId(), 500, "2023-09-04 10:30:00", "A1,A2"));
         //when
-        mockMvc.perform(get("/movies/reservationDetails/{cinemaMovieId}", savedCinemaMovie.getCinemaMovieId()))
+        mockMvc.perform(get("/movies/{cinemaMovieId}/reservationDetails", savedCinemaMovie.getCinemaMovieId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.occupiedSeats").value("A1,A2"));
