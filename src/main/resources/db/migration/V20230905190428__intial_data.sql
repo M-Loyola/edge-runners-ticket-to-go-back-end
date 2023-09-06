@@ -41,22 +41,22 @@ insert into movie(title, duration, description, image,is_showing )
 values ("Avengers", 160,"Lorem ipsum just avengers  things", "https://www.movieposters.com/cdn/shop/products/108b520c55e3c9760f77a06110d6a73b_240x360_crop_center.progressive.jpg?v=1573652543",false);
 
 
-insert into details_cinema_movie(movie_id, cinema_id, price, schedule, occupied_seats)
+insert into details_mov_and_cin(movie_id, cinema_id, price, schedule, occupied_seats)
 values (1, 1, 240, '2023-09-04 10:30:00', 'A1,A2');
-insert into details_cinema_movie(movie_id, cinema_id, price, schedule, occupied_seats)
+insert into details_mov_and_cin(movie_id, cinema_id, price, schedule, occupied_seats)
 values (2, 2, 240, '2023-09-04 13:30:00', 'B2,B3,C10');
-insert into details_cinema_movie(movie_id, cinema_id, price, schedule, occupied_seats)
+insert into details_mov_and_cin(movie_id, cinema_id, price, schedule, occupied_seats)
 values (3, 3, 1000, '2023-06-04 15:30:12', 'C5');
 
-insert into details_cinema_movie(movie_id, cinema_id, price, schedule )
+insert into details_mov_and_cin(movie_id, cinema_id, price, schedule )
 values (4, 4, 1000, '2023-06-04 15:30:12');
 
-insert into details_cinema_movie(movie_id, cinema_id, price, schedule )
+insert into details_mov_and_cin(movie_id, cinema_id, price, schedule )
 values (5, 5, 1000, '2023-06-04 15:30:12');
 
-insert into details_cinema_movie(movie_id, cinema_id, price, schedule )
+insert into details_mov_and_cin(movie_id, cinema_id, price, schedule )
 values (6, 6, 1000, '2023-06-04 15:30:12');
 
-insert into details_cinema_movie(movie_id, cinema_id, price, schedule )
+insert into details_mov_and_cin(movie_id, cinema_id, price, schedule )
 values (2, 6, 1000, '2023-06-04 15:30:12');
 
