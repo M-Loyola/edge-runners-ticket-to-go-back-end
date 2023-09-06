@@ -1,6 +1,5 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
-import com.tickettogo.TicketToGoBackend.entity.CinemaMovie;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.service.MovieService;
 import com.tickettogo.TicketToGoBackend.service.dto.MovieDetailsDto;
@@ -36,7 +35,7 @@ public class MoviesController {
     }
 
     @GetMapping("/reservationDetails/{cinemaMovieId}")
-    public MovieDetailsDto getAllCinemaMovie(@PathVariable Integer cinemaMovieId){
-        return  movieService.getAllCinemaMovie(cinemaMovieId);
+    public MovieDetailsDto getAllCinemaMovie(@PathVariable Integer cinemaMovieId) {
+        return movieService.getAllCinemaMovie(cinemaMovieId);
     }
 }
