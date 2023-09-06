@@ -16,7 +16,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class CinemaMovie {
+public class DetailsCinemaMovie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +27,6 @@ public class CinemaMovie {
     private Integer price;
 
     private String schedule;
+    private String occupiedSeats;
 }
 
