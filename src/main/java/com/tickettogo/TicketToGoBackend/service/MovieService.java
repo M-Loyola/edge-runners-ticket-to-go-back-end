@@ -1,7 +1,7 @@
 package com.tickettogo.TicketToGoBackend.service;
 
 import com.tickettogo.TicketToGoBackend.entity.Cinema;
-import com.tickettogo.TicketToGoBackend.entity.CinemaMovie;
+import com.tickettogo.TicketToGoBackend.entity.DetailsCinemaMovie;
 import com.tickettogo.TicketToGoBackend.exception.NoCinemaFound;
 import com.tickettogo.TicketToGoBackend.repository.CinemaMovieRepository;
 import com.tickettogo.TicketToGoBackend.repository.CinemaRepository;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,7 +50,7 @@ public class MovieService {
     }
 
     public MovieDetailsDto getAllCinemaMovie(Integer cinemaMovieId){
-        CinemaMovie cinemaMovieById = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
+        DetailsCinemaMovie cinemaMovieById = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
         Movie movieById = moviesRepository.findById(cinemaMovieById.getMovie_Id()).orElseThrow(NoMovieException::new);
         Cinema cinemaById = cinemaRepository.findById((cinemaMovieById.getCinema_Id())).orElseThrow(NoCinemaFound::new);
         return MovieDetailsMapper.toEntity(movieById, cinemaById, cinemaMovieById);
