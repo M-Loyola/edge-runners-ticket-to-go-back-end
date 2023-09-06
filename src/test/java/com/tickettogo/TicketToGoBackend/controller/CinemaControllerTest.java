@@ -1,7 +1,9 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
 import com.tickettogo.TicketToGoBackend.entity.Cinema;
+import com.tickettogo.TicketToGoBackend.entity.DetailsCinemaMovie;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
+import com.tickettogo.TicketToGoBackend.repository.CinemaMovieRepository;
 import com.tickettogo.TicketToGoBackend.repository.CinemaRepository;
 import com.tickettogo.TicketToGoBackend.repository.MoviesRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -28,17 +30,21 @@ public class CinemaControllerTest {
 
     @Autowired
     private MoviesRepository moviesRepository;
+    @Autowired
+    private CinemaMovieRepository cinemaMovieRepository;
 
     @BeforeEach
     void clearAll() {
         cinemaRepository.deleteAll();
         moviesRepository.deleteAll();
+        cinemaMovieRepository.deleteAll();
     }
 
     @AfterEach
     void tearDown() {
         cinemaRepository.deleteAll();
         moviesRepository.deleteAll();
+        cinemaMovieRepository.deleteAll();
     }
 
     @Test
@@ -71,5 +77,19 @@ public class CinemaControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[0].name")).value("Cinema 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[0].movieList[0].title")).value("John wick 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath(("$[0].movieList[1].title")).value("John wick 2"));
+    }
+
+    @Test
+    void should_show_movie_details_when_perform_get_given_cinema_movie_id() throws Exception {
+        //given
+        Cinema savedCinema = cinemaRepository.save(new Cinema("Cinema 1", "Manila"));
+        Movie savedMovie = moviesRepository.save(new Movie("John wick 1", 120));
+        DetailsCinemaMovie savedCinemaMovie = cinemaMovieRepository.save(new DetailsCinemaMovie(null, savedMovie.getId(), savedCinema.getId(), 500, "2023-09-04 10:30:00", "A1,A2"));
+        //when
+        mockMvc.perform(get("/movies/reservationDetails/{cinemaMovieId}", savedCinemaMovie.getCinemaMovieId()))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.occupiedSeats").value("A1,A2"));
+        //then
     }
 }
