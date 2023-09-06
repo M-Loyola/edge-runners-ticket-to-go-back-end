@@ -1,10 +1,11 @@
 CREATE TABLE IF NOT EXISTS users(
-    id  int auto_increment primary key,
+    id int auto_increment primary key,
     last_name varchar(255) NOT NULL,
     first_name varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     mobile_number varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
+    orders varchar(255),
     CONSTRAINT UC_Users UNIQUE(email, mobile_number)
 );
 

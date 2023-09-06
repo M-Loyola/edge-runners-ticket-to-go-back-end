@@ -9,5 +9,7 @@ create table if not exists orders (
     is_payed Boolean NOT NULL,
     price int NOT NULL,
     quantity int NOT NULL,
-    total_price int NOT NULL
+    total_price int NOT NULL,
+    user_id int,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
