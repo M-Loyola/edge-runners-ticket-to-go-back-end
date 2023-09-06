@@ -39,7 +39,7 @@ public class OrdersControllerTest {
     @Test
     void should_return_order_when_perform_save_given_order() throws Exception {
         //given
-        Orders orders = new Orders("John Wick", "Cinema Manila", "Manila", "A1,A2", "2023-06-04 15:30:12", 120, true, 350, 2, 350);
+        Orders orders = new Orders(null,"John Wick", "Cinema Manila", "Manila", "A1,A2", "2023-06-04 15:30:12", 120, false, 350, 2, 350,1 ,null);
         ObjectMapper objectMapper = new ObjectMapper();
         //when    //then
         mockMvc.perform(MockMvcRequestBuilders.post("/orders")
