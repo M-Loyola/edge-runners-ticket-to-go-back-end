@@ -51,6 +51,19 @@ class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath(("$.firstName")).value("Jens"));
     }
 
+    @Test
+    void should_create_new_user_when_perform_post_given_new_user_info() throws Exception {
+        //given
+        Users savedUser1 = userRepository.save(new Users("Jens", "Jovellano", "jensjovellano@gmail.com", "09228509618", "jenspassword"));
+        ObjectMapper objectMapper = new ObjectMapper();
+        String newUserString = objectMapper.writeValueAsString(savedUser1);
+        //when
+        mockMvc.perform(post("/users/createUser")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(newUserString))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName").value("Jens"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName").value("Jovellano"));
         //then
     }
 }
