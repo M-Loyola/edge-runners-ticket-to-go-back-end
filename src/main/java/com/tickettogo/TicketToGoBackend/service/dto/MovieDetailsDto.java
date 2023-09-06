@@ -9,13 +9,9 @@ public class MovieDetailsDto {
     private String description;
     private Integer duration;
 
-    public MovieDetailsDto(Integer id, String title, String description, Integer duration) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.duration = duration;
-    }
+    private String CinemaName;
 
-    public MovieDetailsDto() {
-    }
+    private String Location;
+    private Integer Price;
+    private String schedule;
 }
