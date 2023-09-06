@@ -1,7 +1,7 @@
 package com.tickettogo.TicketToGoBackend.service;
 
 import com.tickettogo.TicketToGoBackend.entity.Cinema;
-import com.tickettogo.TicketToGoBackend.entity.DetailsCinemaMovie;
+import com.tickettogo.TicketToGoBackend.entity.DetailsMovAndCin;
 import com.tickettogo.TicketToGoBackend.exception.NoCinemaFound;
 import com.tickettogo.TicketToGoBackend.repository.CinemaMovieRepository;
 import com.tickettogo.TicketToGoBackend.repository.CinemaRepository;
@@ -49,8 +49,8 @@ public class MovieService {
         return moviesRepository.findById(id).orElseThrow(NoMovieException::new);
     }
 
-    public MovieDetailsDto getAllCinemaMovie(Integer cinemaMovieId){
-        DetailsCinemaMovie cinemaMovieById = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
+    public MovieDetailsDto GetReservationDetails(Integer cinemaMovieId){
+        DetailsMovAndCin cinemaMovieById = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
         Movie movieById = moviesRepository.findById(cinemaMovieById.getMovie_Id()).orElseThrow(NoMovieException::new);
         Cinema cinemaById = cinemaRepository.findById((cinemaMovieById.getCinema_Id())).orElseThrow(NoCinemaFound::new);
         return MovieDetailsMapper.toEntity(movieById, cinemaById, cinemaMovieById);
