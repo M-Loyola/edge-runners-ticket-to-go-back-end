@@ -1,5 +1,6 @@
 package com.tickettogo.TicketToGoBackend.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,7 +29,7 @@ public class Movie {
         this.duration = duration;
     }
 
-    public Movie(Integer id, String title, Integer duration, String image, String description,Boolean isShowing) {
+    public Movie(Integer id, String title, Integer duration, String image, String description, Boolean isShowing) {
         this.id = id;
         this.title = title;
         this.duration = duration;

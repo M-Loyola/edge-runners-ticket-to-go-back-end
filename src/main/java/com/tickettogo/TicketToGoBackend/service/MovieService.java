@@ -1,5 +1,8 @@
 package com.tickettogo.TicketToGoBackend.service;
 
+import com.tickettogo.TicketToGoBackend.entity.CinemaMovie;
+import com.tickettogo.TicketToGoBackend.repository.CinemaMovieRepository;
+import com.tickettogo.TicketToGoBackend.service.dto.MovieDetailsDto;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.exception.NoMovieException;
 import com.tickettogo.TicketToGoBackend.repository.MoviesRepository;
@@ -13,6 +16,9 @@ import java.util.stream.Collectors;
 public class MovieService {
     @Autowired
     MoviesRepository moviesRepository;
+
+    @Autowired
+    CinemaMovieRepository cinemaMovieRepository;
 
     public List<Movie> getAllMovies() {
         return moviesRepository.findAll();
@@ -35,5 +41,9 @@ public class MovieService {
 
     public Movie findById(Integer id) {
         return moviesRepository.findById(id).orElseThrow(NoMovieException::new);
+    }
+
+    public List<CinemaMovie> getAllCinemaMovie(){
+        return cinemaMovieRepository.findAll();
     }
 }

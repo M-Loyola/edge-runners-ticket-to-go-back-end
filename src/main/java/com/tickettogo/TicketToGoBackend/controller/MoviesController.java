@@ -1,5 +1,6 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
+import com.tickettogo.TicketToGoBackend.entity.CinemaMovie;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,22 @@ public class MoviesController {
     }
 
     @GetMapping("/showing")
-    public List<Movie> getNowShowingMovies(){
+    public List<Movie> getNowShowingMovies() {
         return movieService.getAllShowingMovies();
     }
 
     @GetMapping("/upcoming")
-    public List<Movie> getUpComingMovies(){
+    public List<Movie> getUpComingMovies() {
         return movieService.getAllUpComingMovies();
     }
+
     @GetMapping("/{id}")
-    public Movie getMovieById(@PathVariable Integer id){
+    public Movie getMovieById(@PathVariable Integer id) {
         return movieService.findById(id);
+    }
+
+    @GetMapping("/cinemamovie")
+    public List<CinemaMovie> getAllCinemaMovie(){
+        return  movieService.getAllCinemaMovie();
     }
 }

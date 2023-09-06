@@ -3,7 +3,7 @@ create table if not exists cinema_movie (
     movie_id int NOT NULL,
     cinema_id int NOT NULL,
     price int NOT NULL,
-    schedule DATETIME  NULL,
+    schedule varchar(255) NULL,
     FOREIGN KEY (movie_id)
     REFERENCES movie(id),
 	FOREIGN KEY (cinema_id)
