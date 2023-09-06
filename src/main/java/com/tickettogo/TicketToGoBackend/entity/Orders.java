@@ -25,6 +25,7 @@ public class Orders {
     private Integer quantity;
     private Integer totalPrice;
     private Integer user_id;
+    private String qrCodeUrl;
 
     public Orders(String title, String cinemaName, String location, String reservedSeats, String schedule, Integer duration, Boolean isPayed, Integer price, Integer quantity, Integer totalPrice) {
         this.title = title;

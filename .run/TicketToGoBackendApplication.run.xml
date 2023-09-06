@@ -2,7 +2,7 @@
   <configuration default="false" name="TicketToGoBackendApplication" type="Application" factoryName="Application" nameIsGenerated="true">
     <envs>
       <env name="MYSQL_URL" value="mysql://localhost:3306/demo_db?useUnicode=true&amp;characterEncoding=utf8" />
-      <env name="MYSQLPASSWORD" value="jensdbpass" />
+      <env name="MYSQLPASSWORD" value="mysql1234" />
       <env name="MYSQLUSER" value="root" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="com.tickettogo.TicketToGoBackend.TicketToGoBackendApplication" />

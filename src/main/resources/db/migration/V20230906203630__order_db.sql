@@ -10,6 +10,7 @@ create table if not exists orders (
     price int NOT NULL,
     quantity int NOT NULL,
     total_price int NOT NULL,
+    qr_code_url varchar(255) NULL,
     user_id int,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
