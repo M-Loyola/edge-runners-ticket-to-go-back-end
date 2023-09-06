@@ -1,12 +1,12 @@
 package com.tickettogo.TicketToGoBackend.service.dto;
 
 import com.tickettogo.TicketToGoBackend.entity.Cinema;
-import com.tickettogo.TicketToGoBackend.entity.DetailsCinemaMovie;
+import com.tickettogo.TicketToGoBackend.entity.DetailsMovAndCin;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 
 public class MovieDetailsMapper {
 
-    public static MovieDetailsDto toEntity(Movie movie, Cinema cinema, DetailsCinemaMovie cinemaMovie){
+    public static MovieDetailsDto toEntity(Movie movie, Cinema cinema, DetailsMovAndCin cinemaMovie){
         MovieDetailsDto movieDetailsDto = new MovieDetailsDto();
 
         movieDetailsDto.setId(movie.getId());
