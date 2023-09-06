@@ -1,5 +1,6 @@
 package com.tickettogo.TicketToGoBackend.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "cinema")
 public class Cinema {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +20,7 @@ public class Cinema {
 
     @OneToMany
     @JoinTable(
-            name = "cinema_movie",
+            name = "details_mov_and_cin",
             joinColumns = @JoinColumn(name = "cinema_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     List<Movie> movieList;
