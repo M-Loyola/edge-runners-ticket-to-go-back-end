@@ -2,10 +2,8 @@ package com.tickettogo.TicketToGoBackend.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,6 +19,8 @@ public class Users {
     private String email;
     private String mobile_number;
     private String password;
+    @OneToMany(mappedBy = "user")
+    private List<Orders> ordersList;
 
     public Users(String firstName, String lastName, String email, String mobile_number, String password) {
         this.firstName = firstName;
