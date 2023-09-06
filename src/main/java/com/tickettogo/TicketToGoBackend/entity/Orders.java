@@ -3,10 +3,7 @@ package com.tickettogo.TicketToGoBackend.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -26,6 +23,9 @@ public class Orders {
     private Integer price;
     private Integer quantity;
     private Integer totalPrice;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = true)
+    private Users user;
 
     public Orders(String title, String cinemaName, String location, String reservedSeats, String schedule, Integer duration, Boolean isPayed, Integer price, Integer quantity, Integer totalPrice) {
         this.title = title;
