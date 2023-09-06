@@ -14,4 +14,5 @@ public class MovieDetailsDto {
     private String Location;
     private Integer Price;
     private String schedule;
+    private String occupiedSeats;
 }
