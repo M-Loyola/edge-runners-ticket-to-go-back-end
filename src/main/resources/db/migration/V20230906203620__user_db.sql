@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS users(
     mobile_number varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     orders varchar(255),
-    CONSTRAINT UC_Users UNIQUE(email, mobile_number)
+    UNIQUE(email),
+    UNIQUE(mobile_number)
 );
 
-INSERT INTO users(last_name, first_name, email, mobile_number, password) VALUES("John", "Smith", "johnsmith@johnsmith.com", "09987654321", "password");
+INSERT INTO users(last_name, first_name, email, mobile_number, password) VALUES("Smith", "John", "johnsmith@johnsmith.com", "09987654321", "password");
