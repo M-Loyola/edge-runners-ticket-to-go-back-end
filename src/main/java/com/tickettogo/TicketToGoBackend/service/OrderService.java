@@ -27,7 +27,7 @@ public class OrderService {
     private void updateOrderQrCodeUrl(Orders order){
         StringBuilder stringBuilder = new StringBuilder();
         String qrCodeBaseUrl = "https://barcode.orcascan.com/?data=";
-        User userById = userRepository.findById(order.getUser_id()).orElseThrow(NoUserFoundException::new);
+        User userById = userRepository.findById(order.getUserId()).orElseThrow(NoUserFoundException::new);
         String qrCodeUrl = stringBuilder.append(qrCodeBaseUrl)
                 .append(order.getOrderNumber())
                 .append(order.getCinemaName())
@@ -36,5 +36,11 @@ public class OrderService {
                 .append(userById.getMobile_number()).toString().replace(" ", "");
         order.setQrCodeUrl(qrCodeUrl);
         orderRepository.save(order);
+    }
+
+    public Orders updateOrder(Integer orderNumber) {
+        Orders toBeUpdatedOrder = orderRepository.findById(orderNumber).orElseThrow(RuntimeException::new);
+        toBeUpdatedOrder.setIsPayed(true);
+        return saveOrder(toBeUpdatedOrder);
     }
 }

@@ -18,5 +18,8 @@ public class OrderController {
         return orderService.saveOrder(orders);
     }
 
-
+    @PutMapping("/{orderNumber}")
+    public Orders updateOrder(@PathVariable Integer orderNumber) {
+        return orderService.updateOrder(orderNumber);
+    }
 }

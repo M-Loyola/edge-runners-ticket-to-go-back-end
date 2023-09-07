@@ -1,5 +1,6 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
+import com.tickettogo.TicketToGoBackend.entity.Orders;
 import com.tickettogo.TicketToGoBackend.entity.User;
 import com.tickettogo.TicketToGoBackend.service.UserService;
 import com.tickettogo.TicketToGoBackend.service.dto.UserResponseDto;
@@ -31,5 +32,9 @@ public class UserController {
     @PostMapping ("/login")
     public UserResponseDto signInUser(@RequestBody User userRequestLogInDto){
         return userService.findByEmailAndPassword(userRequestLogInDto);
+    }
+    @GetMapping("/{user_id}/orders")
+    public List<Orders> getUserOrders(@PathVariable Integer user_id) {
+        return userService.findOrdersByUserId(user_id);
     }
 }

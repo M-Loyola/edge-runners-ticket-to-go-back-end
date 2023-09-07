@@ -16,7 +16,7 @@ public class Orders {
     private String title;
     private String cinemaName;
     private String location;
-
+    private String imageUrl;
     private String reservedSeats;
     private String schedule;
     private Integer duration;
@@ -24,13 +24,14 @@ public class Orders {
     private Integer price;
     private Integer quantity;
     private Integer totalPrice;
-    private Integer user_id;
+    private Integer userId;
     private String qrCodeUrl;
 
-    public Orders(String title, String cinemaName, String location, String reservedSeats, String schedule, Integer duration, Boolean isPayed, Integer price, Integer quantity, Integer totalPrice) {
+    public Orders(String title, String cinemaName, String location, String imageUrl, String reservedSeats, String schedule, Integer duration, Boolean isPayed, Integer price, Integer quantity, Integer totalPrice) {
         this.title = title;
         this.cinemaName = cinemaName;
         this.location = location;
+        this.imageUrl = imageUrl;
         this.reservedSeats = reservedSeats;
         this.schedule = schedule;
         this.duration = duration;
