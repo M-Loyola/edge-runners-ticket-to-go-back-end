@@ -34,9 +34,12 @@ public class OrderService {
         User userById = userRepository.findById(order.getUserId()).orElseThrow(NoUserFoundException::new);
         String qrCodeUrl = stringBuilder.append(qrCodeBaseUrl)
                 .append(order.getOrderNumber())
+                .append("-")
                 .append(order.getCinemaName())
+                .append(order.getLocation())
                 .append(userById.getId())
                 .append(userById.getFirstName())
+                .append(userById.getLastName())
                 .append(userById.getMobile_number()).toString().replace(" ", "");
         order.setQrCodeUrl(qrCodeUrl);
         orderRepository.save(order);
