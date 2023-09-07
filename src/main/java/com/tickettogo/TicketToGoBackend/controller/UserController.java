@@ -1,8 +1,8 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
-import com.tickettogo.TicketToGoBackend.entity.Users;
-import com.tickettogo.TicketToGoBackend.exception.UserAlreadyExistsException;
+import com.tickettogo.TicketToGoBackend.entity.User;
 import com.tickettogo.TicketToGoBackend.service.UserService;
+import com.tickettogo.TicketToGoBackend.service.dto.UserResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,18 +15,21 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @GetMapping()
-    public List<Users> getAllUsers() {
+    public List<User> getAllUsers() {
         return userService.findAll();
     }
     @GetMapping("/{userId}")
-    public Users getUserDetails(@PathVariable Integer userId) {
+    public User getUserDetails(@PathVariable Integer userId) {
         return userService.findById(userId);
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/createUser")
-    public Users createNewUser(@RequestBody Users user) throws SQLIntegrityConstraintViolationException {
+    public User createNewUser(@RequestBody User user) throws SQLIntegrityConstraintViolationException {
         return userService.save(user);
+    }
+    @PostMapping ("/login")
+    public UserResponseDto signInUser(@RequestBody User userRequestLogInDto){
+        return userService.findByEmailAndPassword(userRequestLogInDto);
     }
 }

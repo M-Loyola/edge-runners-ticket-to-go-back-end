@@ -1,8 +1,9 @@
-package com.tickettogo.TicketToGoBackend.service.dto;
+package com.tickettogo.TicketToGoBackend.service.mapper;
 
 import com.tickettogo.TicketToGoBackend.entity.Cinema;
 import com.tickettogo.TicketToGoBackend.entity.DetailsMovAndCin;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
+import com.tickettogo.TicketToGoBackend.service.dto.MovieDetailsDto;
 
 public class MovieDetailsMapper {
 

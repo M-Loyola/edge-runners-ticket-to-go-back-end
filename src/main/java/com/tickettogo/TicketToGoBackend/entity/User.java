@@ -10,7 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Users {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
@@ -22,7 +23,7 @@ public class Users {
     @OneToMany(mappedBy = "user_id")
     private List<Orders> ordersList;
 
-    public Users(String firstName, String lastName, String email, String mobile_number, String password) {
+    public User(String firstName, String lastName, String email, String mobile_number, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
