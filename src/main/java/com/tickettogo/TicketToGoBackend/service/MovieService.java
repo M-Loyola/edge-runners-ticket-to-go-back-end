@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,8 +50,11 @@ public class MovieService {
         return moviesRepository.findById(id).orElseThrow(NoMovieException::new);
     }
 
-    public MovieDetailsDto GetReservationDetails(Integer cinemaMovieId) {
-        DetailsMovAndCin cinemaMovieById = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
+    public MovieDetailsDto GetReservationDetails(Integer movieId, Integer cinemaId) {
+        DetailsMovAndCin cinemaMovieById = cinemaMovieRepository.findOneByMovieIdAndCinemaId(movieId, cinemaId).stream().findFirst().orElseThrow(NoMovieException::new);
+        System.out.println(cinemaMovieById);
+
+        ///
         Movie movieById = moviesRepository.findById(cinemaMovieById.getMovie_Id()).orElseThrow(NoMovieException::new);
         Cinema cinemaById = cinemaRepository.findById((cinemaMovieById.getCinema_Id())).orElseThrow(NoCinemaFound::new);
         return MovieDetailsMapper.toEntity(movieById, cinemaById, cinemaMovieById);

@@ -35,9 +35,10 @@ public class MoviesController {
         return movieService.findById(id);
     }
 
-    @GetMapping("/{cinemaMovieId}/reservationDetails")
-    public MovieDetailsDto GetReservationDetails(@PathVariable Integer cinemaMovieId) {
-        return movieService.GetReservationDetails(cinemaMovieId);
+    @GetMapping("/{movieId}/{cinemaId}/reservationDetails")
+    public MovieDetailsDto GetReservationDetails(@PathVariable Integer movieId, @PathVariable Integer cinemaId) {
+
+        return movieService.GetReservationDetails(movieId, cinemaId);
     }
     @PutMapping("/{cinemaMovieId}/occupiedSeats")
     public DetailsMovAndCin updateScheduleDetails(@PathVariable Integer cinemaMovieId, @RequestBody String newReservedSeats) {

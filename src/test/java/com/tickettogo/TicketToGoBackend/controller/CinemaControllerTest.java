@@ -86,7 +86,7 @@ public class CinemaControllerTest {
         Movie savedMovie = moviesRepository.save(new Movie("John wick 1", 120));
         DetailsMovAndCin savedCinemaMovie = cinemaMovieRepository.save(new DetailsMovAndCin(null, savedMovie.getId(), savedCinema.getId(), 500, "2023-09-04 10:30:00", "A1,A2"));
         //when
-        mockMvc.perform(get("/movies/{cinemaMovieId}/reservationDetails", savedCinemaMovie.getCinemaMovieId()))
+        mockMvc.perform(get("/movies/{cinemaMovieId}/{cinemaId}/reservationDetails", savedCinemaMovie.getCinemaMovieId(),savedCinema.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.occupiedSeats").value("A1,A2"));
