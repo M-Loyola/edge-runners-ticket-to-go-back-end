@@ -1,5 +1,6 @@
 package com.tickettogo.TicketToGoBackend.controller;
 
+import com.tickettogo.TicketToGoBackend.entity.DetailsMovAndCin;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.service.MovieService;
 import com.tickettogo.TicketToGoBackend.service.dto.MovieDetailsDto;
@@ -37,5 +38,10 @@ public class MoviesController {
     @GetMapping("/{cinemaMovieId}/reservationDetails")
     public MovieDetailsDto GetReservationDetails(@PathVariable Integer cinemaMovieId) {
         return movieService.GetReservationDetails(cinemaMovieId);
+    }
+    @PutMapping("/{cinemaMovieId}/updateOccupiedSeats")
+    public DetailsMovAndCin updateScheduleDetails(@PathVariable Integer cinemaMovieId, @RequestBody String newReservedSeats) {
+        System.out.println(newReservedSeats);
+        return movieService.updateScheduleDetails(cinemaMovieId, newReservedSeats);
     }
 }
