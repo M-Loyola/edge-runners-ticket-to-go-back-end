@@ -39,9 +39,8 @@ public class MoviesController {
     public MovieDetailsDto GetReservationDetails(@PathVariable Integer cinemaMovieId) {
         return movieService.GetReservationDetails(cinemaMovieId);
     }
-    @PutMapping("/{cinemaMovieId}/updateOccupiedSeats")
+    @PutMapping("/{cinemaMovieId}/occupiedSeats")
     public DetailsMovAndCin updateScheduleDetails(@PathVariable Integer cinemaMovieId, @RequestBody String newReservedSeats) {
-        System.out.println(newReservedSeats);
         return movieService.updateScheduleDetails(cinemaMovieId, newReservedSeats);
     }
 }

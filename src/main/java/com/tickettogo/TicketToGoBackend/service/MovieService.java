@@ -49,7 +49,7 @@ public class MovieService {
         return moviesRepository.findById(id).orElseThrow(NoMovieException::new);
     }
 
-    public MovieDetailsDto GetReservationDetails(Integer cinemaMovieId){
+    public MovieDetailsDto GetReservationDetails(Integer cinemaMovieId) {
         DetailsMovAndCin cinemaMovieById = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
         Movie movieById = moviesRepository.findById(cinemaMovieById.getMovie_Id()).orElseThrow(NoMovieException::new);
         Cinema cinemaById = cinemaRepository.findById((cinemaMovieById.getCinema_Id())).orElseThrow(NoCinemaFound::new);
@@ -59,14 +59,26 @@ public class MovieService {
 
     public DetailsMovAndCin updateScheduleDetails(Integer cinemaMovieId, String newReservedSeats) {
         DetailsMovAndCin toBeUpdatedDetails = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
-        if(toBeUpdatedDetails.getOccupiedSeats() == null) {
+        if (occupiedSeatsIsNull(toBeUpdatedDetails.getOccupiedSeats())) {
             toBeUpdatedDetails.setOccupiedSeats("");
         }
-        String newOccupiedSeats = toBeUpdatedDetails.getOccupiedSeats().concat(",").concat(newReservedSeats);
-        if(newOccupiedSeats.charAt(0) == ',') {
+        String newOccupiedSeats = createNewOccupiedSeatsString(toBeUpdatedDetails.getOccupiedSeats(), newReservedSeats);
+        if (firstCharIsComma(newOccupiedSeats)) {
             newOccupiedSeats = newOccupiedSeats.substring(1);
         }
         toBeUpdatedDetails.setOccupiedSeats(newOccupiedSeats);
         return cinemaMovieRepository.save(toBeUpdatedDetails);
+    }
+
+    private boolean occupiedSeatsIsNull(String occupiedSeats) {
+        return occupiedSeats == null;
+    }
+
+    private String createNewOccupiedSeatsString(String currentOccupiedSeats, String newOccupiedSeats) {
+        return currentOccupiedSeats.concat(",").concat(newOccupiedSeats);
+    }
+
+    private boolean firstCharIsComma(String occupiedSeats) {
+        return occupiedSeats.charAt(0) == ',';
     }
 }
