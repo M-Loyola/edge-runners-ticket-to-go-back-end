@@ -9,7 +9,7 @@ import com.tickettogo.TicketToGoBackend.service.dto.MovieDetailsDto;
 import com.tickettogo.TicketToGoBackend.entity.Movie;
 import com.tickettogo.TicketToGoBackend.exception.NoMovieException;
 import com.tickettogo.TicketToGoBackend.repository.MoviesRepository;
-import com.tickettogo.TicketToGoBackend.service.dto.MovieDetailsMapper;
+import com.tickettogo.TicketToGoBackend.service.mapper.MovieDetailsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
