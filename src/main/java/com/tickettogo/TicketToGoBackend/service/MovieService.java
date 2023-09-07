@@ -56,4 +56,17 @@ public class MovieService {
         return MovieDetailsMapper.toEntity(movieById, cinemaById, cinemaMovieById);
 
     }
+
+    public DetailsMovAndCin updateScheduleDetails(Integer cinemaMovieId, String newReservedSeats) {
+        DetailsMovAndCin toBeUpdatedDetails = cinemaMovieRepository.findById(cinemaMovieId).orElseThrow(NoMovieException::new);
+        if(toBeUpdatedDetails.getOccupiedSeats() == null) {
+            toBeUpdatedDetails.setOccupiedSeats("");
+        }
+        String newOccupiedSeats = toBeUpdatedDetails.getOccupiedSeats().concat(",").concat(newReservedSeats);
+        if(newOccupiedSeats.charAt(0) == ',') {
+            newOccupiedSeats = newOccupiedSeats.substring(1);
+        }
+        toBeUpdatedDetails.setOccupiedSeats(newOccupiedSeats);
+        return cinemaMovieRepository.save(toBeUpdatedDetails);
+    }
 }
