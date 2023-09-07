@@ -1,7 +1,9 @@
 package com.tickettogo.TicketToGoBackend.service;
 
+import com.tickettogo.TicketToGoBackend.entity.Orders;
 import com.tickettogo.TicketToGoBackend.entity.User;
 import com.tickettogo.TicketToGoBackend.exception.NoUserFoundException;
+import com.tickettogo.TicketToGoBackend.repository.OrderRepository;
 import com.tickettogo.TicketToGoBackend.repository.UserRepository;
 import com.tickettogo.TicketToGoBackend.service.dto.UserResponseDto;
 import com.tickettogo.TicketToGoBackend.service.mapper.UserMapper;
@@ -15,6 +17,8 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     public List<User> findAll() {
         return userRepository.findAll();
@@ -35,5 +39,9 @@ public class UserService {
 
 
         return UserMapper.toEntityResponse(oneByEmailAndPassword);
+    }
+
+    public List<Orders> findOrdersByUserId(Integer user_id) {
+        return orderRepository.findOrdersByUserId(user_id);
     }
 }
