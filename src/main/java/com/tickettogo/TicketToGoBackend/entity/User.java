@@ -20,7 +20,7 @@ public class User {
     private String email;
     private String mobile_number;
     private String password;
-    @OneToMany(mappedBy = "user_id")
+    @OneToMany(mappedBy = "userId")
     private List<Orders> ordersList;
 
     public User(String firstName, String lastName, String email, String mobile_number, String password) {
