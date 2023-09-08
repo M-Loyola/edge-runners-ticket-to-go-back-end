@@ -10,7 +10,7 @@ public class MovieDetailsMapper {
     public static MovieDetailsDto toEntity(Movie movie, Cinema cinema, DetailsMovAndCin cinemaMovie){
         MovieDetailsDto movieDetailsDto = new MovieDetailsDto();
 
-        movieDetailsDto.setId(movie.getId());
+        movieDetailsDto.setId(cinemaMovie.getCinemaMovieId());
         movieDetailsDto.setTitle(movie.getTitle());
         movieDetailsDto.setDescription(movie.getDescription());
         movieDetailsDto.setDuration(movie.getDuration());
