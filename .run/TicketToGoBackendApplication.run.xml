@@ -5,11 +5,11 @@
       <env name="MYSQLPASSWORD" value="mysql1234" />
       <env name="MYSQLUSER" value="root" />
     </envs>
-    <option name="MAIN_CLASS_NAME" value="com.tickettogo.TicketToGoBackend.TicketToGoBackendApplication" />
+    <option name="MAIN_CLASS_NAME" value="com.tickettogo.ticket_to_go_backend.TicketToGoBackendApplication" />
     <module name="TicketToGoBackend.main" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.tickettogo.TicketToGoBackend.configuration.*" />
+        <option name="PATTERN" value="com.tickettogo.ticket_to_go_backend.configuration.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
